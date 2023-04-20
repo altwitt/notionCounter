@@ -19,11 +19,11 @@
       // all parameters are optional and can be changed later
       let config = new shinejs.Config({
       numSteps: 16,
-      opacity: 0.5,
-      shadowRGB: new shinejs.Color(255, 0, 0)
+      opacity: 0.20,
+      shadowRGB: new shinejs.Color(0, 0, 0)
 });
 
-      let shine = new Shine(document.getElementById('counter'));
+      let shine = new Shine(document.getElementById('counter'), config);
      
       function update() {
         window.requestAnimationFrame(update);
