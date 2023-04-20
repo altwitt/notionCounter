@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Counter</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="dist/shine.min.js"></script>
+  </head>
+  <body>
+
+    <div id="counter" class="counter-text"></div>
+
+    <script type="text/javascript">
+      let examDay = Math.floor(((((Math.floor((new Date(2023, 5, 8, 13).getTime()) - Date.now())/1000)/60)/60)/24))
+
+      let counter = document.getElementById('counter')
+      counter.innerHTML = examDay
+      // use new shinejs.Shine(...) if Shine is already defined somewhere else
+      // var shine = new shinejs.Shine(document.getElementById("headline"));
+      // all parameters are optional and can be changed later
+      let config = new shinejs.Config({
+      numSteps: 16,
+      opacity: 0.5,
+      shadowRGB: new shinejs.Color(255, 0, 0)
+});
+
+      let shine = new Shine(document.getElementById('counter'));
+     
+      function update() {
+        window.requestAnimationFrame(update);
+        
+        let time = new Date().getTime();
+        
+        let speed = 0.00050;  // 1 = 1000 rotations/s
+        let phase = time * speed * 2.0 * Math.PI;
+        let radiusX = window.innerWidth * 0.5;
+        let radiusY = window.innerHeight * 0.5;
+        shine.light.position.x = radiusX + radiusX * Math.cos(phase);
+        shine.light.position.y = radiusY + radiusY * Math.sin(phase * 0.7);
+        shine.draw();
+      }
+
+      update();
+    </script>
+  </body>
+</html>
