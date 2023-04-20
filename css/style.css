@@ -3,6 +3,7 @@
  */
  div#counter {
   margin:0;
+  background-color: #fff;
  }
 .counter-text {
   margin: 0; 
